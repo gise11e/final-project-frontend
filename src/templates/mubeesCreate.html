@@ -1,0 +1,35 @@
+{{ mubeesCreate.mubee }}
+
+<section class="row">
+  <form ng-submit="mubeesCreate.create()">
+    <div class="twelve columns">
+      <label>Title</label>
+      <input type="text" name="title" placeholder="Title" ng-model="mubeesCreate.mubee.title" class="u-full-width">
+    </div>
+    <label>Deadline</label>
+    <input type="date" name="deadline" placeholder="Deadline" ng-model="mubeesCreate.mubee.deadline" class="u-full-width">
+  </div>
+    <div class="twelve columns">
+      <label>Brief</label>
+      <input type="text" name="brief" placeholder="Brief" ng-model="mubeesCreate.mubee.brief" class="u-full-width">
+    </div>
+    <div class="twelve columns">
+          <label>Location</label>
+          <input ng-model="mubeesCreate.mubee.location" googleplace lat="mubeesCreate.mubee.lat" lng="mubeesCreate.mubee.lng">
+    </div>
+
+    <div class="twelve columns">
+      <label>Contract</label>
+      <select ng-model="mubeesCreate.mubee.contract_id">
+        <option ng-repeat="contract in mubeesCreate.contracts" ng-value="contract.id">{{ contract.title }}</option>
+      </select>
+    </div>
+
+    <div class="twelve columns">
+      <label>Budget</label>
+      <input type="number" name="budget" placeholder="Budget" ng-model="mubeesCreate.mubee.budget" class="u-full-width">
+    </div>
+
+    <button>Send</button>
+  </form>
+</section>

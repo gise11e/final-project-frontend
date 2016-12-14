@@ -1,0 +1,31 @@
+<section>
+
+  <form ng-submit="usersEdit.addSkills()">
+    <label for="skills">Select Skills</label>
+    <ui-select multiple close-on-select="false" style="width: 600px;" ng-model="usersEdit.querySkills">
+      <ui-select-match placeholder="type a skill">{{$item.name}}</ui-select-match>
+      <ui-select-choices repeat="skill in usersEdit.skills">
+        <div ng-bind-html="skill.name"></div>
+      </ui-select-choices>
+    </ui-select>
+    <button>Update skills</button>
+  </form>
+
+  <form ng-submit="usersEdit.update()">
+    <label>Available as Crew</label>
+    <switch id="enabled" name="enabled" ng-model="usersEdit.user.crew" on="On" off="Off" class="green">
+    </switch>
+<br>
+    <input ng-model="usersEdit.user.full_name" placeholder="Name">
+    <input ng-model="usersEdit.user.username" placeholder="Username">
+    <input ng-model="usersEdit.user.email" placeholder="Email">
+
+    <div class="twelve columns">
+      <label>Location</label>
+      <input ng-model="usersEdit.user.location" googleplace lat="usersEdit.user.lat" lng="usersEdit.user.lng">
+    </div>
+    <input ng-model="usersEdit.user.website" placeholder="website">
+
+    <button>Update</button>
+  </form>
+</section>

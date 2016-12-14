@@ -1,0 +1,49 @@
+<hamburger-toggle state="tgState">
+  <ul>
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <!-- <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li> -->
+    <li ui-sref="usersShow ({ id: usersDashboard })">MY PROFILE</li>
+    <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
+  </ul>
+</hamburger-toggle>
+<section>
+  <h3> {{ mubeesShow.mubee.title }}</h3>
+  <h5>Accepted?: {{ mubeesShow.mubee.accepted }}</h5>
+  <h5>Mubee created by: {{ mubeesShow.mubee.producer_id }}</h5>
+  <h5>Delivered by: {{ mubeesShow.mubee.deadline }}</h5>
+
+	<h5>Location: {{ mubeesShow.mubee.location }}</h5>
+	<h5>Brief: {{ mubeesShow.mubee.brief }}</h5>
+  <h5>Budget: £ {{ mubeesShow.mubee.budget }}</h5>
+  <h5>{{ mubeesShow.mubee.contract.title }}</h5>
+  <button ui-sref="mubeesEdit({ id: mubeesShow.mubee.id })" >Edit</button>
+
+  <button ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">Dashboard</button>
+  </section>
+
+  <button ng-click="mubeesShow.acceptRequest()" type="button" name="button" ng-hide="mubeesShow.mubee.accepted">accept</button>
+
+  <section ng-show="mubeesShow.mubee.can_review">
+    <h4>Review {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h4>
+
+    <form ng-submit="mubeesShow.createReview()">
+      <textarea ng-model="mubeesShow.review.body"></textarea>
+
+      <div class="stars-container" ng-class="'stars'+mubeesShow.review.rating">
+        <div class="star" ng-repeat="star in [1,2,3,4,5]">
+        <input type="radio"
+           ng-model="mubeesShow.review.rating"
+           value={{star}}
+           name="rating{{star}}"
+           id="rating{{star}}"
+           ng-change="string"
+           ng-value={{star}}>
+           <label for="rating{{star}}">&#9733;</label>
+         </div>
+       </div>
+      <input type="submit" value="Rate!">
+    </form>
+  </section>
+
+</section>
+<!-- ng-if="mubeesShow.isCurrentMubee()" -->

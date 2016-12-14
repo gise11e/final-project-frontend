@@ -1,0 +1,27 @@
+<header>
+<nav>
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li>
+  </ul>
+</nav>
+</header>
+<section>
+  <h1>Mubees Edit</h1>
+
+  <form ng-submit="mubeesEdit.update()">
+    <input ng-model="mubeesEdit.mubee.brief" placeholder="user">
+    <input ng-model="mubeesEdit.mubee.brief" placeholder="brief">
+    <input ng-model="mubeesEdit.mubee.location" placeholder="location">
+    <input ng-model="mubeesEdit.mubee.budget" placeholder="budget">
+    <input ng-model="mubeesEdit.mubee.accepted" placeholder="accepted">
+
+    <div class="twelve columns">
+      <label>Contract</label>
+      <select ng-model="mubeesEdit.mubee.contract_id">
+        <option ng-repeat="contract in mubeesEdit.contracts" ng-value="contract.id">{{ contract.title }}</option>
+      </select>
+    </div>
+
+    <button>Update</button>
+  </form>
+</section>

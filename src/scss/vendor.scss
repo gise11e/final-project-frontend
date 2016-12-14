@@ -1,0 +1,12 @@
+@import "../../bower_components/skeleton/css/skeleton";
+@import "angular-ui-switch";
+@import "partials/card";
+@import "partials/starRating";
+
+
+.nav {
+  background-color: gray;
+  ul li {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,10 @@
+<form stripe:form="saveCustomer">
+  <fieldset>
+    <h6><label for="">Credit Card Details</label>
+    number<input type="text" size="20" data-stripe="number"/>
+    cvc<input type="text" size="4" data-stripe="cvc"/>
+    expiry date(month/year)<input type="text" size="2" data-stripe="exp-month"/>
+    <input type="text" size="4" data-stripe="exp-year"/></h6>
+  </fieldset>
+  <button type="submit">Save</button>
+</form>

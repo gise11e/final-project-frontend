@@ -1,0 +1,28 @@
+{
+  "name": "final-project-frontend",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Mike Hayden <mickyginger@gmail.com> (https://github.com/mickyginger)"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.9",
+    "angular-resource": "^1.5.9",
+    "angular-ui-router": "^0.3.2",
+    "satellizer": "^0.15.5",
+    "angular-ui-select": "https://github.com/angular-ui/ui-select.git#^0.19.6",
+    "angular-sanitize": "1.5.9",
+    "angular-ui-switch": "^0.1.1",
+    "stripe-angular": "^1.0.2",
+    "angular-hamburger-toggle": "https://github.com/dbtek/angular-hamburger-toggle.git#^0.2.0"
+  }
+}

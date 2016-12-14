@@ -1,0 +1,71 @@
+<hamburger-toggle state="tgState">
+  <ul>
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <!-- <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li> -->
+    <li ui-sref="usersShow ({ id: usersDashboard })">MY PROFILE</li>
+    <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
+  </ul>
+</hamburger-toggle>
+
+<section>
+	<h3>{{ usersShow.user.full_name }} {{ usersShow.user.image }}</h3>
+  <h6>{{ usersShow.user.location }}</h6>
+  <h5><ul>
+    <li ng-repeat="skill in usersShow.user.skills">{{skill.name}}</li>
+  </ul></h5>
+  <h5>{{ usersShow.user.website }}</h5>
+
+  <ul>
+    <li ng-repeat="review in usersShow.user.reviews_as_producer">
+      <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
+      <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
+
+        <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
+        <input type="radio"
+           ng-model="usersShow.review.rating"
+           value={{star}}
+           name="rating{{star}}"
+           id="rating{{star}}"
+           ng-change="string"
+           ng-value={{star}}>
+           <label for="rating{{star}}">&#9733;</label>
+         </div>
+       </div>
+     </h4>
+    </li>
+    <li ng-repeat="review in usersShow.user.reviews_as_crew">
+      <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
+      <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
+
+        <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
+        <input type="radio"
+           ng-model="usersShow.review.rating"
+           value={{star}}
+           name="rating{{star}}"
+           id="rating{{star}}"
+           ng-change="string"
+           ng-value={{star}}>
+           <label for="rating{{star}}">&#9733;</label>
+         </div>
+       </div>
+     </h4>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <button ui-sref="mubeesCreate({ crewId: usersShow.user.id })">Request Services</button>
+  <button ui-sref="usersEdit({ id: usersShow.user.id })" ng-if="usersShow.isCurrentUser()">Edit Profile</button>
+</section>
+
+
+ <!-- "role"
+ "facebook"
+ "twitter"
+ "instagram"
+ "location"
+  "lat"
+  "lng"
+ "website"  -->
+
+ <!-- REQUEST SERVICES (i.e send mubee) -->

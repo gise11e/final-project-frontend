@@ -1,0 +1,48 @@
+<header>
+<nav>
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li>
+  </ul>
+</nav>
+</header>
+<hamburger-toggle state="tgState">
+  <ul>
+    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+    <!-- <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li> -->
+    <li ui-sref="usersShow ({ id: usersDashboard })">MY PROFILE</li>
+    <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
+  </ul>
+</hamburger-toggle>
+<section>
+        <button ui-sref="usersIndex ({ id: usersIndex.user })">Search for Crew</button>
+      <!-- <button novalidate ng-submit="register.submit()">search</button> -->
+<h1 class="title"> my mubees </h1>
+
+      <div class="container" class="six columns">
+        <ul>
+        <li ng-repeat="mubee in usersDashboard.user.mubees" class="six columns">
+          <h5><a role="button" ui-sref="mubeesShow({id: mubee.id})">{{ mubee.title }}</a></h5>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container" class="six columns">
+      <ul>
+        <li ng-repeat="mubee in usersDashboard.user.requests" class="six columns">
+          <h5><a role="button" ui-sref="mubeesShow({id: mubee.id})" ng-class="{'accepted': mubee.accepted }">{{ mubee.title }}</a></h5>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+
+
+
+
+
+<!-- ROLE (act as crew prod or both),
+(GO TO)PROFILE
+(GO TO)SEARCH
+(GO TO )MUBEES (DROP DOWN MENU)
+LOGOUT  -->
