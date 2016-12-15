@@ -1,0 +1,18 @@
+<form ng-submit="search.filterUsers()">
+  <label for="skills">Select Skills</label>
+  <ui-select multiple close-on-select="false" style="width: 600px;" ng-model="search.querySkills">
+    <ui-select-match placeholder="type a skill">{{$item.name}}</ui-select-match>
+    <ui-select-choices repeat="skill in search.skills">
+      <div ng-bind-html="skill.name"></div>
+    </ui-select-choices>
+  </ui-select>
+
+  <div class="search-crew">
+    <label>Location</label>
+    <input class="search-crew" ng-model="search.location" googleplace lat="search.lat" lng="search.lng">
+  </div>
+  <label>Rating</label>
+  <input type="checkbox" name="rating" value="rating"> <br>
+  <button>Search</button>
+
+</form>

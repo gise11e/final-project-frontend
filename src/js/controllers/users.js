@@ -5,28 +5,23 @@ angular.module('finalProject')
   .controller('UsersDashboardController', UsersDashboardController);
 
 
-UsersIndexController.$inject = ['User','Skill'];
-function UsersIndexController(User, Skill) {
+UsersIndexController.$inject = ['User','Skill', '$state'];
+function UsersIndexController(User, Skill, $state) {
   const usersIndex = this;
-
-  usersIndex.skills = Skill.query();
 
   usersIndex.showForm = true;
   usersIndex.params = {};
-  function filterUsers() {
-    if(usersIndex.querySkills) {
-      const skill_ids = usersIndex.querySkills.map((skill) => {
-        return skill.id;
-      });
 
-      usersIndex.params['skill_ids[]'] = skill_ids;
-    }
+  let params = {};
 
-    usersIndex.all = User.query(usersIndex.params);
+  if($state.params.skill_ids || $state.params.location) {
     usersIndex.showForm = false;
+    params = $state.params;
+    params['skill_ids[]'] = $state.params.skill_ids;
+    delete params.skill_ids;
   }
 
-  usersIndex.filterUsers = filterUsers;
+  usersIndex.all = User.query(params);
 
 }
 

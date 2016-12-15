@@ -9,8 +9,13 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: '/templates/splash.html',
       controller: 'LoginController as login'
     })
+    .state('search', {
+      url: '/search',
+      templateUrl: '/templates/search.html',
+      controller: 'SearchController as search'
+    })
     .state('usersIndex', {
-      url: '/users',
+      url: '/users?skill_ids&latitude&longitude',
       templateUrl: '/templates/usersIndex.html',
       controller: 'UsersIndexController as usersIndex'
     })

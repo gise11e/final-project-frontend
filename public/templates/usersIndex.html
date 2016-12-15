@@ -1,36 +1,14 @@
-
-<section ng-show="usersIndex.showForm">
-  <form ng-submit="usersIndex.filterUsers()">
-    <label for="skills">Select Skills</label>
-    <ui-select multiple close-on-select="false" style="width: 600px;" ng-model="usersIndex.querySkills">
-      <ui-select-match placeholder="type a skill">{{$item.name}}</ui-select-match>
-      <ui-select-choices repeat="skill in usersIndex.skills">
-        <div ng-bind-html="skill.name"></div>
-      </ui-select-choices>
-    </ui-select>
-
-    <div class="search-crew">
-      <label>Location</label>
-      <input class="search-crew" ng-model="usersIndex.user.location" googleplace lat="usersIndex.params.lat" lng="usersIndex.params.lng">
-    </div>
-    <label>Rating</label>
-    <input type="checkbox" name="rating" value="rating"> <br>
-    <button>Search</button>
-
-  </form>
-</section>
-
-<section ng-hide="usersIndex.showForm">
+<section>
   <h1>choose a crew</h1>
   <ul class="cards">
     <li ng-repeat="user in usersIndex.all" class="four columns cards__single">
-        <div class="cards__single-image" style="background-image:url('../images/gb.gif')">
+        <div class="cards__single-image" style="background-">
         <div class="cards__single-details">
           <h4 ui-sref="usersShow({ id: user.id })">{{ user.full_name }}</h4>
-          <!-- <h4>{{ user.image }}</h4> -->
+          <h4>{{ user.image }}</h4>
           <h4>{{ user.website }}</h4>
           <h4>{{ user.rating }}</h4>
-          <!-- <h4 ng-repeat="skill in user.skills">{{skill.name}}</h4> -->
+          <h4 ng-repeat="skill in user.skills">{{skill.name}}</h4>
         </div>
       </div>
     </li>
