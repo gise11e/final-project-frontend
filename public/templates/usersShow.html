@@ -1,11 +1,9 @@
-<hamburger-toggle state="tgState">
-  <ul>
-    <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
-    <!-- <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li> -->
-    <li ui-sref="usersShow ({ id: usersDashboard })">MY PROFILE</li>
-    <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
-  </ul>
-</hamburger-toggle>
+<hamburger-toggle state="tgState"></hamburger-toggle>
+<ul ng-show="tgState">
+  <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+  <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
+  <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
+</ul>
 
 <section>
 	<h3>{{ usersShow.user.full_name }} {{ usersShow.user.image }}</h3>

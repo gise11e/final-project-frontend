@@ -1,5 +1,5 @@
 angular.module('finalProject', ['ngResource', 'ui.router', 'stripe', 'satellizer', 'ui.select', 'ngSanitize', 'uiSwitch','ngHamburger'])
-  .constant('API_URL', 'http://localhost:3000/api')
+  .constant('API_URL', window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : 'https://mubee.herokuapp.com/api')
   .config(Auth)
   .config(
     function() {

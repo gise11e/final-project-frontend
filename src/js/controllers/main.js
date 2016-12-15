@@ -8,6 +8,7 @@ function MainController($rootScope, $auth, $state, $http) {
   //  main.message = null;
   main.menuVisible = false;
 
+
   function toggleMenu() {
     main.menuVisible = !main.menuVisible;
   }
@@ -23,6 +24,10 @@ function MainController($rootScope, $auth, $state, $http) {
   const protectedStates = ['usersEdit'];
 
   function secureState(e, toState, toParams) {
+
+    if($auth.isAuthenticated()) {
+      main.currentUserId = $auth.getPayload().id;
+    }
 
     if((!$auth.isAuthenticated() &&
     protectedStates.includes(toState.name)) ||
