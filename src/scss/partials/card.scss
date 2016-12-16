@@ -2,10 +2,11 @@
   list-style: none;
   &__single:nth-child(3n+1) {
     margin-left: 0;
+    background-image: url();
   }
   &__single-image {
     border-radius: 20px;
-    margin: 5px;
+    // margin: 5px;
     width: 90%;
     background-position: center;
     background-size: cover;
@@ -24,7 +25,7 @@
   }
   &__single-details {
     background-color: rgba(255, 255, 255, 0.75);
-    padding: 10px;
+    // padding: 10px;
     position: absolute;
     bottom: -80px;
     left: 0;

@@ -17,6 +17,8 @@
           <li ng-repeat="skill in usersShow.user.skills">{{skill.name}}</li>
         </ul></h5>
         <h5>{{ usersShow.user.website }}</h5>
+        <h6> @smlink  </h6>
+
 
         <section>
           <button ng-if="!usersShow.isOwnProfile()" ui-sref="mubeesCreate({ crewId: usersShow.user.id })">Request Services</button>

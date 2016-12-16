@@ -16,7 +16,7 @@
     <li ng-repeat="user in usersIndex.all" class="four columns cards__single">
         <div class="cards__single-image" style="background-">
         <div class="cards__single-details">
-          <h4 class="titlesNames" ui-sref="usersShow({ id: user.id })">{{ user.full_name }}</h4>
+          <h5 class="titlesNames" ui-sref="usersShow({ id: user.id })">{{ user.full_name }}</h5>
           <img style="max-width:100px;border-radius:90px;"ng-src="{{ user.image }}">
           <h4>{{ user.website }}</h4>
           <h4>{{ user.rating }}</h4>
