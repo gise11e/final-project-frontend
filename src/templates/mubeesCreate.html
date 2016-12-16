@@ -1,4 +1,3 @@
-{{ mubeesCreate.mubee }}
 
 <section class="row">
   <form ng-submit="mubeesCreate.create()">
@@ -29,6 +28,22 @@
       <label>Budget</label>
       <input type="number" name="budget" placeholder="Budget" ng-model="mubeesCreate.mubee.budget" class="u-full-width">
     </div>
+
+    <div class="twelve columns">
+      <label>Payment Method</label>
+      <select>
+        <option ng-repeat="paymentSource in mubeesCreate.stripeCustomer.sources.data">{{paymentSource.brand}} Card: XXXX-XXXX-XXXX-{{ paymentSource.last4 }}</option>
+      </select>
+    </div>
+
+      <!-- <section>
+        <div ng-repeat="paymentSource in mubeesCreate.stripeCustomer.sources.data">
+          <p>Type: {{paymentSource.brand}}</p>
+          <p>Expires: {{paymentSource.exp_month}}/{{paymentSource.exp_year}}</p>
+          <p>Card: XXXX-XXXX-XXXX-{{paymentSource.last4}}</p>
+        </div>
+      </section>
+    </div> -->
 
     <button>Send</button>
   </form>

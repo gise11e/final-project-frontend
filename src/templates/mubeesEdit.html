@@ -1,9 +1,9 @@
 <header>
   <hamburger-toggle state="tgState"></hamburger-toggle>
-    <ul ng-show="tgState">
+    <ul ng-show="tgState" class="navH">
       <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
       <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
-      <li ui-sref="payments({ id: usersDashboard })">PAYMENTS</li>
+      <li ui-sref="payments({ id: usersDashboard })">PAYMENT METHODS</li>
     </ul>
 </header>
 

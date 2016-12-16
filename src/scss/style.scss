@@ -1,12 +1,71 @@
 body {
-  background-color: #edf3fc;
-  color: gray;
   font-family: helvetica;
   list-style: none;
   align-items: center;
-  text-align: center;
-  margin:50px;
+  margin:10px;
   padding:10px;
+}
+.searchCrew {
+  margin:15px;
+  
+}
+#title {
+  color:black;
+  background-color: white;
+  border-bottom: 2px solid black;
+  opacity: 0.6;
+  text-align: center;
+  padding:10px;
+  font-family: 'Averia Sans Libre';
+  font-weight: bold;
+  margin: 15px;
+}
+.mubeeReq {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  margin-bottom:15px;
+  display: inline-block;
+}
+.mubeeShowForm{
+  // text-align: center;
+}
+.titlesNames{
+  font-family: 'Julius Sans One', sans-serif;
+
+}
+.mubeeShow {
+  font-weight: bold;
+  font-size: 17px;
+}
+.list {
+font-style: italic;
+ font-size: 18px;
+}
+#mubeeShow {
+  font-size: 30px;
+}
+#sendReview {
+  // font-style: italic;
+  font-size: 19px;
+  font-weight: bold;
+  color:#ffc6fa;
+}
+.alignCenter{
+  text-align: center;
+  align-items: center;
+}
+.navH{
+  list-style: none;
+}
+
+
+.container1 {
+  margin-top: 15px;
+}
+.controller2 {
+  margin-top: 15px;
+
+
 }
 .drag-drop {
   min-height: 300px;
@@ -20,8 +79,6 @@ body {
   }
   &.active {
     background-color: #black;
-
-
   }
 }
 
@@ -30,38 +87,46 @@ body {
        width: 50%; /* 50% for two columns, 33.33% for three etc */
    }
 
-.title {
-  color:white;
-  background-color: black;
-  opacity: 0.6;
-}
+   button {
+     background-color: #ffc6fa;
+     border-radius: 80px;
+     color: white;
+   }
+
 .container {
   background-color: white;
   margin: 10px;
   border-radius: 10px;
   opacity: 0.6;
 }
-
-// .container1 {
-//   li:nth-child(2n+1) {
-//     margin-left: 0;
-//   }
-// }
-
+.dashboardHeader{
+  border-bottom: 5px solid black;
+  align-items: center;
+  text-align: center;
+}
+#searchC {
+  border-radius: 0px;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  font-size: 20px;
+}
 a {
-  color:gray;
   text-decoration: none;
+  color: gray;
+}
+
+.splashLink {
+  color: white;
 }
 
 a:hover {
-  color:#ffff87;
+  color:#ffc6fa;
 }
 li {
-  list-style: none;
+  // list-style: none;
 }
-button  {
-  color: gray;
-}
+
 h4 a {
   &.accepted {
     color: #ffff87;

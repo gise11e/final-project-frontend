@@ -1,26 +1,27 @@
 
 <header  ng-if="main.isLoggedIn()">
 <hamburger-toggle state="tgState"></hamburger-toggle>
-<ul ng-show="tgState">
+<ul ng-show="tgState" class="navH">
   <li class="logout"><a ng-click="main.logout()">LOG OUT</a></li>
-  <!-- <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li> -->
   <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
   <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
-  <li ui-sref="payments({ id: usersDashboard })">PAYMENTS</li>
+  <li ui-sref="payments({ id: usersDashboard })">PAYMENT METHODS</li>
 </ul>
 </header>
 
 <section>
-  <button ui-sref="search ({ id: usersIndex.user })">Search for Crew</button>
-  <h1>
-  <img src="https://s-media-cache-ak0.pinimg.com/originals/b9/16/c7/b916c7ae897f9cf957e9332b3a042f02.gif" style="width:90px;border-radius:90px;"/></h1>
-  <hr>
-  <br>
+  <div class="dashboardHeader">
+    <h1>
+      <img src="https://s-media-cache-ak0.pinimg.com/originals/b9/16/c7/b916c7ae897f9cf957e9332b3a042f02.gif" style="width:90px;border-radius:90px;"/><button id="searchC" ui-sref="search ({ id: usersIndex.user })">Find Crew</button>
+    </h1>
+  </div>
+
 
   <div class="container1">
     <div class="six columns">
       <div class="row">
          <ul>
+           <span class="mubeeReq">received</span>
             <li ng-repeat="mubee in usersDashboard.user.mubees">
               <div class="box" data-index="{{$index + 1}}">
               <h5><a role="button" ui-sref="mubeesShow({id: mubee.id})">{{ mubee.title }}</a></h5>
@@ -35,6 +36,7 @@
     <div class="six columns">
       <div class="row">
         <ul>
+          <span class="mubeeReq">sent</span>
           <li  ng-repeat="mubee in usersDashboard.user.requests">
             <div class="box" data-index="{{$index + 1}}">
             <h5><a role="button" ui-sref="mubeesShow({id: mubee.id})" ng-class="{'accepted': mubee.accepted }">{{ mubee.title }}</a></h5>

@@ -1,29 +1,29 @@
 <hamburger-toggle state="tgState"></hamburger-toggle>
-<ul ng-show="tgState">
+<ul ng-show="tgState" class="navH">
   <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
   <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
   <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
   <li ui-sref="mubeesEdit({ id: mubeesShow.mubee.id })" >REQUEST MUBEE CHANGES</li>
 
 </ul>
-<section>
-  <h3> {{ mubeesShow.mubee.title }}</h3>
-  <h5>Accepted?: {{ mubeesShow.mubee.accepted }}</h5>
-  <h5>Request sent to: {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h5>
-  <h5>Delivered by: {{ mubeesShow.mubee.deadline }}</h5>
+<section class="mubeeShowForm">
+  <h3 class="titlesNames" id="mubeeShow"> {{ mubeesShow.mubee.title }}</h3>
+  <h5><span class="mubeeShow">ACCEPTED? </span> {{ mubeesShow.mubee.accepted }}</h5>
+  <h5><span class="mubeeShow">REQUEST SENT TO </span>  {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h5>
+  <h5><span class="mubeeShow">DELIVERED BY</span> {{ mubeesShow.mubee.deadline }}</h5>
 
-	<h5>Location: {{ mubeesShow.mubee.location }}</h5>
-	<h5>Brief: {{ mubeesShow.mubee.brief }}</h5>
-  <h5>Budget: £ {{ mubeesShow.mubee.budget }}</h5>
+	<h5><span class="mubeeShow">LOCATION </span> {{ mubeesShow.mubee.location }}</h5>
+	<h5><span class="mubeeShow">BRIEF </span> {{ mubeesShow.mubee.brief }}</h5>
+  <h5><span class="mubeeShow">BUDGET £ </span> {{ mubeesShow.mubee.budget }}</h5>
   <h5>{{ mubeesShow.mubee.contract.title }}</h5>
 
-  </section>
+</section>
   <hr>
 
   <button ng-if="mubeesShow.isOwnProfile" ng-click="mubeesShow.acceptRequest()" type="button" name="button" ng-hide="mubeesShow.mubee.accepted">accept</button>
 
   <section ng-show="mubeesShow.mubee.can_review || mubees">
-    <h4>Review {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h4>
+    <h4 id="sendReview">Leave a review for {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h4>
 
     <form ng-submit="mubeesShow.createReview()">
       <textarea ng-model="mubeesShow.review.body"></textarea>

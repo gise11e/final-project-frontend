@@ -1,33 +1,31 @@
 <header>
   <hamburger-toggle state="tgState"></hamburger-toggle>
-    <ul ng-show="tgState">
+    <ul ng-show="tgState" class="navH">
       <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
       <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
-      <li ui-sref="payments({ id: usersDashboard })">PAYMENTS</li>
     </ul>
 </header>
 
-<section>
-  <div ng-repeat="paymentSource in payments.stripeCustomer.sources.data">
-    <p>Type: {{paymentSource.brand}}</p>
-    <p>Expires: {{paymentSource.exp_month}}/{{paymentSource.exp_year}}</p>
-    <p>Card: XXXX-XXXX-XXXX-{{paymentSource.last4}}</p>
-  </div>
-</section>
-
 <form stripe-form="saveCustomer">
   <fieldset>
-    <h6><label for="">Credit Card Details</label>
-    number<input type="text" size="20" data-stripe="number"/>
-    cvc<input type="text" size="4" data-stripe="cvc"/>
+    <h6><label for="">Credit Card Details</label><br>
+    number<input type="text" size="20" data-stripe="number"/><br>
+    cvc<input type="text" size="4" data-stripe="cvc"/><br>
     expiry date(month/year)<input type="text" size="2" data-stripe="exp-month"/>
     <input type="text" size="4" data-stripe="exp-year"/></h6>
   </fieldset>
   <button type="submit">Save</button>
 </form>
 
+<section>
+  <div ng-repeat="paymentSource in payments.stripeCustomer.sources.data">
+    <img src="https://www.b-payment.com/docs/images/logos/Visa_logo.png" style="max-width:30px;">
+    <p>Expires: {{paymentSource.exp_month}}/{{paymentSource.exp_year}}</p>
+    <p>Card Number: XXXX-XXXX-XXXX-{{paymentSource.last4}}</p>
+  </div>
+</section>
 
-<div class="payments">
+<!-- <div class="payments">
   <ul>
     Payment Methods
     <li>
@@ -37,4 +35,4 @@
     </li>
   </ul>
 
-</div>
+</div> -->

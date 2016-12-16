@@ -3,13 +3,15 @@ angular.module('finalProject')
   .controller('MubeesShowController', MubeesShowController)
   .controller('MubeesCreateController', MubeesCreateController);
 
-MubeesCreateController.$inject = ['Mubee', '$state', 'Contract'];
-function MubeesCreateController(Mubee, $state, Contract) {
+MubeesCreateController.$inject = ['Mubee', '$state', 'Contract', 'Payment'];
+function MubeesCreateController(Mubee, $state, Contract, Payment) {
   const mubeesCreate = this;
 
   mubeesCreate.mubee = {
     crew_id: $state.params.crewId
   };
+
+  mubeesCreate.stripeCustomer = Payment.get({});
 
   mubeesCreate.contracts = Contract.query();
 
@@ -76,7 +78,7 @@ function MubeesEditController(Mubee, $state, Contract) {
 
   function update() {
     mubeesEdit.mubee.$update(() => {
-      $state.go('mubeesShow', { id: mubeesEdit.mubee.id });
+      $state.go('usersDashboard', { id: mubeesEdit.mubee.id });
     });
   }
   function deleteMubee() {
