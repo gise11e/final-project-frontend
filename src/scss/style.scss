@@ -7,7 +7,7 @@ body {
 }
 .searchCrew {
   margin:15px;
-  
+
 }
 #title {
   color:black;
@@ -68,7 +68,8 @@ font-style: italic;
 
 }
 .drag-drop {
-  min-height: 300px;
+  min-height: 200px;
+  max-width: 250px;
   background-color: #fafafa;
   border-radius: 5px;
   line-height: 0;

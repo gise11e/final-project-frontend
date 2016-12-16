@@ -50,10 +50,9 @@
              </div>
            </h4>
           </li>
-          <li ng-repeat="review in usersShow.user.reviews_as_crew">
-            <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
-            <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
-
+          <li ng-repeat="review in usersShow.user.reviews_as_crew" style="list-style:none;">
+              <h4><br><span style="font-size:22px; color:black;font-style:italic;"> "{{review.body}}"</span><span style="font-weight:bold;font-size:18px;"> - crew </span>
+              <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
               <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
               <input type="radio"
                  ng-model="usersShow.review.rating"
