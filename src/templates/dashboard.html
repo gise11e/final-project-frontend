@@ -1,27 +1,28 @@
 
-
+<header  ng-if="main.isLoggedIn()">
 <hamburger-toggle state="tgState"></hamburger-toggle>
 <ul ng-show="tgState">
-  <li class="logout" ng-if="main.isLoggedIn()"><a ng-click="main.logout()">LOG OUT</a></li>
+  <li class="logout"><a ng-click="main.logout()">LOG OUT</a></li>
   <!-- <li ng-if="main.isLoggedIn()"><a ng-href="/#/users/:id">MY PROFILE</a></li> -->
   <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
   <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
   <li ui-sref="payments({ id: usersDashboard })">PAYMENTS</li>
 </ul>
+</header>
 
 <section>
-  <button ui-sref="usersIndex ({ id: usersIndex.user })">Search for Crew</button>
-
+  <button ui-sref="search ({ id: usersIndex.user })">Search for Crew</button>
   <h1>
   <img src="https://s-media-cache-ak0.pinimg.com/originals/b9/16/c7/b916c7ae897f9cf957e9332b3a042f02.gif" style="width:90px;border-radius:90px;"/></h1>
+  <hr>
   <br>
+
   <div class="container1">
     <div class="six columns">
       <div class="row">
-         <ul class="row">
-            <li class="six columns" ng-repeat="mubee in usersDashboard.user.mubees">
+         <ul>
+            <li ng-repeat="mubee in usersDashboard.user.mubees">
               <div class="box" data-index="{{$index + 1}}">
-
               <h5><a role="button" ui-sref="mubeesShow({id: mubee.id})">{{ mubee.title }}</a></h5>
             </div>
             </li>
@@ -35,7 +36,10 @@
       <div class="row">
         <ul>
           <li  ng-repeat="mubee in usersDashboard.user.requests">
+            <div class="box" data-index="{{$index + 1}}">
             <h5><a role="button" ui-sref="mubeesShow({id: mubee.id})" ng-class="{'accepted': mubee.accepted }">{{ mubee.title }}</a></h5>
+          </div>
+
           </li>
         </ul>
       </div>

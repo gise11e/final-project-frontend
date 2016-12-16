@@ -5,56 +5,74 @@
   <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
 </ul>
 
-<section>
-	<h3>{{ usersShow.user.full_name }} {{ usersShow.user.image }}</h3>
-  <h6>{{ usersShow.user.location }}</h6>
-  <h5><ul>
-    <li ng-repeat="skill in usersShow.user.skills">{{skill.name}}</li>
-  </ul></h5>
-  <h5>{{ usersShow.user.website }}</h5>
+<div class="containerUserShow">
+  <div class="six columns">
+    <div class="row">
+      <section>
+      	<h3>{{ usersShow.user.full_name }}</h3>
+        <img style="max-width:100px;border-radius:90px;"ng-src="{{ usersShow.user.image }}">
 
-  <ul>
-    <li ng-repeat="review in usersShow.user.reviews_as_producer">
-      <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
-      <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
+        <h6>{{ usersShow.user.location }}</h6>
+        <h5><ul>
+          <li ng-repeat="skill in usersShow.user.skills">{{skill.name}}</li>
+        </ul></h5>
+        <h5>{{ usersShow.user.website }}</h5>
 
-        <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
-        <input type="radio"
-           ng-model="usersShow.review.rating"
-           value={{star}}
-           name="rating{{star}}"
-           id="rating{{star}}"
-           ng-change="string"
-           ng-value={{star}}>
-           <label for="rating{{star}}">&#9733;</label>
-         </div>
-       </div>
-     </h4>
-    </li>
-    <li ng-repeat="review in usersShow.user.reviews_as_crew">
-      <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
-      <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
+        <section>
+          <button ng-if="!usersShow.isOwnProfile()" ui-sref="mubeesCreate({ crewId: usersShow.user.id })">Request Services</button>
 
-        <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
-        <input type="radio"
-           ng-model="usersShow.review.rating"
-           value={{star}}
-           name="rating{{star}}"
-           id="rating{{star}}"
-           ng-change="string"
-           ng-value={{star}}>
-           <label for="rating{{star}}">&#9733;</label>
-         </div>
-       </div>
-     </h4>
-    </li>
-  </ul>
+          <button ui-sref="usersEdit({ id: usersShow.user.id })" ng-if="usersShow.isCurrentUser()">Edit Profile</button>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="containerUserReviews">
+    <div class="six columns">
+      <div class="row">
+        <ul>
+          <li ng-repeat="review in usersShow.user.reviews_as_producer">
+            <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
+            <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
+
+              <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
+              <input type="radio"
+                 ng-model="usersShow.review.rating"
+                 value={{star}}
+                 name="rating{{star}}"
+                 id="rating{{star}}"
+                 ng-change="string"
+                 ng-value={{star}}>
+                 <label for="rating{{star}}">&#9733;</label>
+               </div>
+             </div>
+           </h4>
+          </li>
+          <li ng-repeat="review in usersShow.user.reviews_as_crew">
+            <h4>{{ review.sender.full_name }} said: <br><span style="font-size:22px; color:black;"> {{review.body}} </span>
+            <div class="stars-container" ng-class="'stars'+usersShow.review.rating">
+
+              <div style="color:gold;"class="star" ng-repeat="star in [1,2,3,4,5]">
+              <input type="radio"
+                 ng-model="usersShow.review.rating"
+                 value={{star}}
+                 name="rating{{star}}"
+                 id="rating{{star}}"
+                 ng-change="string"
+                 ng-value={{star}}>
+                 <label for="rating{{star}}">&#9733;</label>
+               </div>
+             </div>
+           </h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-  <button ui-sref="mubeesCreate({ crewId: usersShow.user.id })">Request Services</button>
-  <button ui-sref="usersEdit({ id: usersShow.user.id })" ng-if="usersShow.isCurrentUser()">Edit Profile</button>
-</section>
+
+
 
 
  <!-- "role"

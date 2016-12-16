@@ -34,15 +34,22 @@ function MubeesShowController(Mubee, Review, $state, $auth) {
       $state.go('usersDashboard');
     });
   }
+  mubeesShow.currentUserId = $auth.getPayload().id;
+
+  mubeesShow.mubee = Mubee.get($state.params);
+
+  mubeesShow.mubee.$promise.then(function(mubee) {
+    mubeesShow.isOwnProfile = (mubeesShow.currentUserId ===  mubee.crew.id);
+  });
 
   function isCurrentMubee() {
     return $auth.getPayload().id === Number($state.params.id);
   }
 
   mubeesShow.isCurrentMubee = isCurrentMubee;
-  mubeesShow.acceptRequest = acceptRequest;
+  // mubeesShow.isOwnProfile = isOwnProfile;
 
-  mubeesShow.mubee = Mubee.get($state.params);
+  mubeesShow.acceptRequest = acceptRequest;
 
   function createReview() {
     const currentUserId = $auth.getPayload().id;
@@ -53,25 +60,30 @@ function MubeesShowController(Mubee, Review, $state, $auth) {
 
     console.log(mubeesShow.review);
     Review.save(mubeesShow.review, () => {
-      // $state.go('usersShow', {id: });
+      $state.go('usersShow', {id: mubeesShow.review.recipient });
     });
   }
 
   mubeesShow.createReview = createReview;
 }
 
-
-MubeesEditController.$inject = ['Mubee', '$state'];
-function MubeesEditController(Mubee, $state) {
+MubeesEditController.$inject = ['Mubee', '$state', 'Contract'];
+function MubeesEditController(Mubee, $state, Contract) {
   const mubeesEdit = this;
 
   mubeesEdit.mubee = Mubee.get($state.params);
+  mubeesEdit.contracts = Contract.query();
 
   function update() {
     mubeesEdit.mubee.$update(() => {
-      $state.go('mubeesShow', $state.params);
-
+      $state.go('mubeesShow', { id: mubeesEdit.mubee.id });
     });
   }
+  function deleteMubee() {
+    mubeesEdit.mubee.$remove(() => {
+      $state.go('usersDashboard');
+    });
+  }
+  this.delete = deleteMubee;
   this.update = update;
 }

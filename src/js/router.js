@@ -35,7 +35,7 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'UsersDashboardController as usersDashboard'
     })
     .state('payments', {
-      url: '/dashboard',
+      url: '/payments',
       templateUrl: '/templates/stripe.html',
       controller: 'PaymentsController as payments'
     })

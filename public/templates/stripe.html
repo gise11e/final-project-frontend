@@ -1,4 +1,21 @@
-<form stripe:form="saveCustomer">
+<header>
+  <hamburger-toggle state="tgState"></hamburger-toggle>
+    <ul ng-show="tgState">
+      <li ui-sref="usersShow({id: main.currentUserId})">MY PROFILE</li>
+      <li ui-sref="usersDashboard({ id: mubeesShow.mubee.id })">DASHBOARD</li>
+      <li ui-sref="payments({ id: usersDashboard })">PAYMENTS</li>
+    </ul>
+</header>
+
+<section>
+  <div ng-repeat="paymentSource in payments.stripeCustomer.sources.data">
+    <p>Type: {{paymentSource.brand}}</p>
+    <p>Expires: {{paymentSource.exp_month}}/{{paymentSource.exp_year}}</p>
+    <p>Card: XXXX-XXXX-XXXX-{{paymentSource.last4}}</p>
+  </div>
+</section>
+
+<form stripe-form="saveCustomer">
   <fieldset>
     <h6><label for="">Credit Card Details</label>
     number<input type="text" size="20" data-stripe="number"/>
@@ -8,3 +25,16 @@
   </fieldset>
   <button type="submit">Save</button>
 </form>
+
+
+<div class="payments">
+  <ul>
+    Payment Methods
+    <li>
+      <option value="creditCards">
+        {{      }}
+      </option>
+    </li>
+  </ul>
+
+</div>

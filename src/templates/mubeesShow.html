@@ -9,7 +9,7 @@
 <section>
   <h3> {{ mubeesShow.mubee.title }}</h3>
   <h5>Accepted?: {{ mubeesShow.mubee.accepted }}</h5>
-  <h5>Mubee created by: {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h5>
+  <h5>Request sent to: {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h5>
   <h5>Delivered by: {{ mubeesShow.mubee.deadline }}</h5>
 
 	<h5>Location: {{ mubeesShow.mubee.location }}</h5>
@@ -20,18 +20,13 @@
   </section>
   <hr>
 
-  <button ng-click="mubeesShow.acceptRequest()" type="button" name="button" ng-hide="mubeesShow.mubee.accepted">accept</button>
+  <button ng-if="mubeesShow.isOwnProfile" ng-click="mubeesShow.acceptRequest()" type="button" name="button" ng-hide="mubeesShow.mubee.accepted">accept</button>
 
-  <section ng-show="mubeesShow.mubee.can_review">
-    <h4>Review {{mubeesShow.mubee.mubeesShow.review.recipient.full_name}}</h4>
-
-    <!-- mubeesShow.review.sender = currentUserId;
-    mubeesShow.review.recipient = mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].id;
-    mubeesShow.review.mubee_id = mubeesShow.mubee.id; -->
+  <section ng-show="mubeesShow.mubee.can_review || mubees">
+    <h4>Review {{mubeesShow.mubee[mubeesShow.mubee.review_recipient_role].full_name}}</h4>
 
     <form ng-submit="mubeesShow.createReview()">
       <textarea ng-model="mubeesShow.review.body"></textarea>
-
       <div class="stars-container" ng-class="'stars'+mubeesShow.review.rating">
         <div class="star" ng-repeat="star in [1,2,3,4,5]">
         <input type="radio"
@@ -44,9 +39,7 @@
            <label for="rating{{star}}">&#9733;</label>
          </div>
        </div>
-      <input type="submit" value="Rate!">
+      <input type="submit" value="Send">
     </form>
   </section>
-
 </section>
-<!-- ng-if="mubeesShow.isCurrentMubee()" -->

@@ -1,14 +1,17 @@
 <section>
-  <h1>choose a crew</h1>
+  <header>
+  <img src="https://s-media-cache-ak0.pinimg.com/originals/b9/16/c7/b916c7ae897f9cf957e9332b3a042f02.gif" style="width:90px;border-radius:90px;"/>
+  </header>
+
   <ul class="cards">
     <li ng-repeat="user in usersIndex.all" class="four columns cards__single">
         <div class="cards__single-image" style="background-">
         <div class="cards__single-details">
           <h4 ui-sref="usersShow({ id: user.id })">{{ user.full_name }}</h4>
-          <h4>{{ user.image }}</h4>
+          <img style="max-width:100px;border-radius:90px;"ng-src="{{ user.image }}">
           <h4>{{ user.website }}</h4>
           <h4>{{ user.rating }}</h4>
-          <h4 ng-repeat="skill in user.skills">{{skill.name}}</h4>
+          <!-- <h4 ng-repeat="skill in user.skills">{{skill.name}}</h4> -->
         </div>
       </div>
     </li>

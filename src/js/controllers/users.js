@@ -34,6 +34,10 @@ function UsersShowController(User, $state, $auth, Review) {
     usersShow.currentUserId = $auth.getPayload().id;
   }
 
+  function isOwnProfile() {
+    return usersShow.currentUserId === usersShow.user.id;
+  }
+
   function isCurrentUser() {
     return $auth.getPayload().id === Number($state.params.id);
   }
@@ -49,6 +53,8 @@ function UsersShowController(User, $state, $auth, Review) {
   usersShow.createReview = createReview;
 
   usersShow.isCurrentUser = isCurrentUser;
+  usersShow.isOwnProfile = isOwnProfile;
+
 
   usersShow.user = User.get($state.params);
 }
@@ -92,18 +98,5 @@ function UsersDashboardController(User, $state, $auth, $http) {
   const currentUserId = $auth.getPayload().id;
 
   usersDashboard.user = User.get({id: currentUserId});
-
-
-  // const token = `Bearer ${$auth.getToken()}`;
-  //
-  // const req = {
-  //   method: 'GET',
-  //   url: 'http://localhost:3000/api/dashboard',
-  //   headers: { authorizaton: token }
-  // };
-  // $http(req).then((response) => {
-  //   usersDashboard.user = response.data.user;
-  //   usersDashboard.mubees = response.data.mubees;
-  // });
 
 }
